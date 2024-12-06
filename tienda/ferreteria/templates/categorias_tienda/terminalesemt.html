@@ -1,0 +1,31 @@
+{% extends 'tienda_final/inicio.html' %}
+{% load static %}
+<html lang="en">
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminales EMT</title>
+    <link rel="stylesheet" href="{% static 'productos.css' %}">
+</head>
+<body>
+    <h1>Todos Nuestro Terminales EMT</h1>
+    <div class="productos-destacados">
+        {% for producto in productos %}
+            <div class="producto">
+                <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}">
+                <h3>{{ producto.nombre }}</h3>
+                <p>{{ producto.descripcion }}</p>
+                <span>Precio: ${{ producto.precio }}</span>
+                <!-- Botón dinámico para agregar al carrito -->
+                <button  class="btn-agregar-carrito" onclick="agregarAlCarrito({{ producto.id }}, '{{ producto.nombre }}', {{ producto.precio }}, '{{ producto.imagen.url }}', {{ producto.stock }})">
+                    Agregar a la cotización
+                </button>
+            </div>
+        {% empty %}
+            <p>No hay Terminales EMT por el momento.</p>
+        {% endfor %}
+    </div>
+</body>
+{% endblock %}
+</html>

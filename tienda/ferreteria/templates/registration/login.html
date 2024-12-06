@@ -1,0 +1,18 @@
+{% load static %}
+{%block content%}
+<link rel="stylesheet" href="{% static 'login.css' %}">
+<div class="login-container">
+    <a href="{% url 'inicio' %}">
+        <img src="{% static 'kovac.jpg' %}" alt="Inicio" class="login-logo">
+    </a>
+    <h3>Iniciar Sesión</h3>
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="Nombre de usuario">
+        <input type="password" name="password" placeholder="Clave de usuario">
+        <button type="submit">Iniciar Sesión</button>
+    </form>
+    <span>¿Aun no tienes cuenta? <a href="{% url 'registro' %}">Registrarse</a></span>
+    <span>¿Olvidaste tu contrasena? <a href="{% url 'recuperar_contrasena' %}">Click Aqui</a></span>
+</div>
+{%endblock%}

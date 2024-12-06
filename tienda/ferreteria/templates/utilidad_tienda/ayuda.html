@@ -1,0 +1,41 @@
+{% extends 'tienda_final/inicio.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'ayuda.css' %}">
+<title>Centro de Ayuda</title>
+
+<div class="ayuda-container">
+    <h1>Centro de ayuda</h1>
+    <h3>Servicio de asistencia</h3>
+    <p>Para una atención personalizada envíanos un mensaje a nuestro WhatsApp donde podrás hacer consultas más específicas.</p>
+
+    <h2>Las respuestas a las preguntas más frecuentes a un solo clic.</h2>
+    <p>En esta página encontrarás respuestas a tus dudas, ya sea con el envío, tus datos personales, entre otras preguntas y/o consultas.</p>
+
+    <h3>¿Cómo registrarme?</h3>
+    <p>Mediante el siguiente enlace, te podrás <a href="{% url 'registro' %}">registrar</a> para acceder al catálogo de productos y realizar tus cotizaciones con seguridad.<br>
+        Si ya te encuentras registrado y quieres iniciar sesión, haz clic <a href="{% url 'login' %}">aquí.</a>
+    </p>
+
+    <h3>Datos de usuario</h3>
+    <p>Todos tus datos se guardan en nuestra base de datos, dándote la tranquilidad de que tu información personal está a salvo.</p>
+
+    <h3>Retiro de productos</h3>
+    <p>Para retirar tu pedido, debes acercarte a la sucursal. Una vez dentro, otorga el número de orden que <br>
+        llegó a tu correo electrónico junto con tu cotización. Posteriormente gestionaremos el pago y haremos entrega de tus productos para que sigas con tus proyectos.
+    </p>
+
+    <h3>Privacidad y Seguridad</h3>
+    <p>Todos tus datos están a salvo con nosotros, ya que contamos con un encriptado en tu contraseña para que nadie se haga pasar por ti.</p>
+
+    <h3>Garantía de productos</h3>
+    <p>Todos nuestros productos cuentan con garantía legal establecida por la ley con una duración de 6 meses.<br>
+        *(Sólo en caso de que el producto cuente con algún defecto de fábrica. No se acepta como garantía el mal uso de este mismo.)
+    </p>
+
+    <h3>Devolución de productos</h3>
+    <p>Para gestionar la devolución del producto por fallas de fábrica, se evaluará la situación. Si es aceptada, se te enviarán instrucciones a tu correo electrónico para realizar el envío del producto a nuestra tienda. En el transcurso de 2 a 3 días hábiles se te depositará el dinero de tu pedido.
+        Si te encuentras en la ciudad de Punta Arenas, dirígete a nuestra tienda física, ubicada en Chiloé 1346, para hacer la devolución del producto.
+    </p>
+</div>
+{% endblock %}

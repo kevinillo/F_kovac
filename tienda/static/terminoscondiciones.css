@@ -1,0 +1,91 @@
+/* Contenedor principal */
+.terminos-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+    line-height: 1.8;
+    color: #333;
+    background-color: #f9f9f9;
+}
+
+/* Título principal */
+.terminos-container h1 {
+    font-size: 2.5rem;
+    color: #007bff;
+    text-align: center;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+/* Subtítulo */
+.terminos-container h2 {
+    font-size: 1.8rem;
+    color: #0056b3;
+    text-align: center;
+    margin-bottom: 15px;
+    text-transform: capitalize;
+}
+
+/* Párrafos */
+.terminos-container p {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    text-align: justify;
+    line-height: 1.8;
+    color: #555;
+}
+
+/* Enlaces */
+.terminos-container a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.terminos-container a:hover {
+    text-decoration: underline;
+}
+
+/* Responsivo para tablets */
+@media (max-width: 768px) {
+    .terminos-container {
+        margin: 20px;
+        padding: 20px;
+    }
+
+    .terminos-container h1 {
+        font-size: 2rem;
+    }
+
+    .terminos-container h2 {
+        font-size: 1.5rem;
+    }
+
+    .terminos-container p {
+        font-size: 0.95rem;
+    }
+}
+
+/* Responsivo para móviles */
+@media (max-width: 480px) {
+    .terminos-container {
+        padding: 15px;
+    }
+
+    .terminos-container h1 {
+        font-size: 1.5rem;
+    }
+
+    .terminos-container h2 {
+        font-size: 1.2rem;
+    }
+
+    .terminos-container p {
+        font-size: 0.85rem;
+    }
+}

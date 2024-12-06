@@ -1,0 +1,38 @@
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'recuperar.css' %}">
+<link rel="stylesheet" href="{% static 'login.css' %}">
+<div class="login-container">
+    <a href="{% url 'inicio' %}">
+        <img src="{% static 'kovac.jpg' %}" alt="Inicio" class="login-logo">
+    </a>
+    <h3>¿Olvidaste tu contraseña?</h3>
+    <p>Ingresa tu correo electrónico para que podamos ayudarte a restablecer tu contraseña.</p>
+    <form method="post" id="recovery-form">
+        {% csrf_token %}
+        <div class="input-group">
+            <input type="email" name="email" id="email" placeholder="Correo Electrónico" autocomplete="off" required>
+            <span id="email-error"></span>
+        </div>
+        <button type="submit" id="submit-btn">Enviar</button>
+        <span>¿No olvidaste tu contraseña? <a href="{% url 'login' %}">Iniciar Sesión</a></span>
+    </form>
+    <!-- Aquí agregamos el spinner -->
+    <div id="loading-spinner" class="spinner-overlay" style="display: none;">
+        <div class="spinner"></div>
+        <p>Procesando tu solicitud, por favor espera...</p>
+    </div>
+    <!-- Fin del spinner -->
+    <div class="messages">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert {% if message.tags %}{{ message.tags }}{% endif %}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>
+
+<script src="{% static 'scripts/recuperar.js' %}"></script>
+{% endblock %}

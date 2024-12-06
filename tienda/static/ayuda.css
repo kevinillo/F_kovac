@@ -1,0 +1,132 @@
+/* Contenedor principal del centro de ayuda */
+.ayuda-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+    line-height: 1.8;
+    color: #333;
+    background-color: #f9f9f9;
+}
+
+/* Encabezado principal */
+.ayuda-container h1 {
+    font-size: 2.5rem;
+    color: #007bff;
+    text-align: center;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+/* Subtítulos */
+.ayuda-container h2 {
+    font-size: 1.8rem;
+    color: #0056b3;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.ayuda-container h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    border-left: 4px solid #007bff;
+    padding-left: 10px;
+}
+
+/* Párrafos */
+.ayuda-container p {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    text-align: justify;
+    line-height: 1.8;
+}
+
+/* Enlaces */
+.ayuda-container a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.ayuda-container a:hover {
+    text-decoration: underline;
+}
+
+/* Botones estilo minimalista (opcional si agregas botones) */
+.ayuda-container button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.ayuda-container button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilo para las listas (si decides incluir alguna) */
+.ayuda-container ul {
+    margin: 15px 0;
+    padding-left: 20px;
+}
+
+.ayuda-container ul li {
+    margin-bottom: 10px;
+    list-style-type: disc;
+}
+
+/* Responsivo para tablets */
+@media (max-width: 768px) {
+    .ayuda-container {
+        margin: 20px;
+        padding: 15px;
+    }
+
+    .ayuda-container h1 {
+        font-size: 2rem;
+    }
+
+    .ayuda-container h2 {
+        font-size: 1.5rem;
+    }
+
+    .ayuda-container h3 {
+        font-size: 1.3rem;
+    }
+
+    .ayuda-container p {
+        font-size: 0.95rem;
+    }
+}
+
+/* Responsivo para móviles */
+@media (max-width: 480px) {
+    .ayuda-container {
+        padding: 10px;
+    }
+
+    .ayuda-container h1 {
+        font-size: 1.5rem;
+    }
+
+    .ayuda-container h2 {
+        font-size: 1.2rem;
+    }
+
+    .ayuda-container h3 {
+        font-size: 1rem;
+    }
+
+    .ayuda-container p {
+        font-size: 0.85rem;
+    }
+}

@@ -1,0 +1,11 @@
+{% extends 'tienda_final/inicio.html' %}
+{% load static %}
+{%block content%}
+<h2>Productos en "{{ categoria }}"</h2>
+<ul>
+    {% for producto in productos %}
+        <li>{{ producto.nombre }} - {{ producto.descripcion }}</li>
+    {% endfor %}
+</ul>
+</html>
+{%endblock%}

@@ -1,0 +1,71 @@
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'login.css' %}">
+<div class="login-container">
+    <a href="{% url 'inicio' %}">
+        <img src="{% static 'kovac.jpg' %}" alt="Inicio" class="login-logo">
+    </a>
+    <h3>¡Regístrate, es gratis!</h3>
+    <form id="registro-form" method="POST">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="Nombre de usuario" required>
+        <input type="email" name="email" placeholder="Correo electrónico" required>
+        <input type="text" name="first_name" placeholder="Nombre" required>
+        <input type="text" name="last_name" placeholder="Apellido" required>
+        <input type="password" name="password1" placeholder="Contraseña" required>
+        <input type="password" name="password2" placeholder="Repetir contraseña" required>
+            <ul style="color: #C0392B; list-style-type: none; padding: 5; margin: 0;">
+                <li>Su contraseña debe tener 8 caracteres:</li>
+                <li>Entre ellos una mayúscula, minúscula y algún número.</li>
+                <li>Al menos un símbolo: !@#$%^&*(),.?":{}|<>.</li>
+            </ul>
+
+        <button type="submit">Registrarse</button>
+        <span>¿Ya tienes Cuenta? <a href="{% url 'login' %}">Iniciar Sesión</a></span>
+    </form>
+    <!-- Incluye SweetAlert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script>
+        document.getElementById('registro-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevenir el envío del formulario por defecto
+    
+            const formData = new FormData(this);
+    
+            fetch("{% url 'registro' %}", { // Asegúrate de que la URL es correcta
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    return response.json().then(data => {
+                        Swal.fire({
+                            title: 'Error',
+                            text: data.error,
+                            icon: 'error',
+                            confirmButtonText: 'Aceptar'
+                        });
+                    });
+                } else {
+                    return response.json().then(data => {
+                        Swal.fire({
+                            title: 'Éxito',
+                            text: data.success,
+                            icon: 'success',
+                            confirmButtonText: 'Aceptar'
+                        }).then(() => {
+                            window.location.href = "{% url 'login' %}"; // Redirigir al login
+                        });
+                    });
+                }
+            })
+            .catch(error => {
+                Swal.fire({
+                    title: 'Error',
+                    text: 'Hubo un problema con la solicitud.',
+                    icon: 'error',
+                    confirmButtonText: 'Aceptar'
+                });
+            });
+        });
+    </script>
+{% endblock %}

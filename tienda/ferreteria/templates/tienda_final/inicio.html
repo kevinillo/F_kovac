@@ -1,0 +1,337 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferretería Kovac</title>
+    <link rel="icon" href={% static 'kovac.jpg' %}>
+    <link rel="stylesheet" href={% static 'style.css' %}>
+    <link rel="stylesheet" href={% static 'footer.css' %}>
+    <link rel="stylesheet" href={% static 'carrito.css' %}>
+</head>
+
+<body>
+    <header>
+        <div class="top-bar">
+            <span>
+                Contáctanos: <strong>+56963666660</strong> | 
+                <a href="mailto:fkovac1346@gmail.com" target="_blank" rel="noopener noreferrer">fkovac1346@gmail.com</a>
+            </span>
+        </div>
+        <div class="logo-bar">
+            <a href="{% url 'inicio' %}">
+                <img src="{% static 'kovac.png' %}" alt="Kovac">
+            </a>
+            <form class="search-bar" method="get" action="{% url 'categorias_tienda' %}">
+                <input type="text" name="q" placeholder="Buscar productos..." value="{{ query }}">
+                <button type="submit">🔍</button>
+            </form>
+            <ul>
+                {% for producto in productos %}
+                    
+                {% empty %}
+                
+                {% endfor %}
+            </ul>
+            <div class="user-options">
+                {% if user.is_authenticated %}
+                    <span>Bienvenido, {{ user.username }}</span> |
+                    <form action={% url 'logout' %} method="post" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="logout-btn">Cerrar Sesión</button>
+                    </form>
+                {% else %}
+                    <a href={% url 'login' %} class="btn btn-login">Iniciar Sesión</a>
+                    <a href={% url 'registro' %} class="btn btn-register">Registrarse</a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="menu-toggle">
+            ☰
+        </div>
+        <nav id="menu" class="nav-menu">
+            <ul>
+                <li><a href={% url 'productosdestacados' %}>Productos Destacados</a></li>
+                <!-- Artefactos -->
+                <li>
+                    <a role="button">Artefactos</a>
+                    <ul class="submenu">
+                        <li><a href={% url 'bticino' %}>Bticino</a></li>
+                        <li><a href={% url 'lexo' %}>Lexo</a></li>
+                        <li><a href={% url 'synthesi' %}>Synthesi</a></li>
+                        <li><a href={% url 'smarthome' %}>Smart Home</a></li>
+                        <li><a href={% url 'stanford' %}>Stanford</a></li>
+                    </ul>
+                </li>
+                
+                <!-- Conductores -->
+                <li>
+                    <a role="button">Conductores</a>
+                    <ul class="submenu">
+                        <li><a href={% url 'cablesevaflex' %}>Cables Evaflex</a></li>
+                        <li><a href={% url 'cordones' %}>Cordones</a></li>
+                        <li><a href={% url 'otrosconductores' %}>Otros Conductores</a></li>
+                        <li><a href={% url 'volantes_adaptadores' %}>Volantes y Adaptadores</a></li>
+                        <li><a href={% url 'terminales_conductores' %}>Terminales y Conductores</a></li>
+                    </ul>
+                </li>
+                
+                <!-- Canalización -->
+                <li>
+                    <a role="button">Canalización</a>
+                    <ul class="submenu">
+                        <li>
+                            <a role="button">PVC</a>
+                            <ul class="submenu">
+                                <li><a href={% url 'abrazaderaspvc' %}>Abrazaderas PVC</a></li>
+                                <li><a href={% url 'curvaspvc' %}>Curvas PVC</a></li>
+                                <li><a href={% url 'tuberiaspvc' %}>Tuberías PVC</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a role="button">EMT</a>
+                            <ul class="submenu">
+                                <li><a href={% url 'abrazaderasemt' %}>Abrazaderas EMT</a></li>
+                                <li><a href={% url 'cajasemt' %}>Cajas EMT</a></li>
+                                <li><a href={% url 'conectormet' %}>Conectores MET</a></li>
+                                <li><a href={% url 'conectorhub' %}>Conectores HUB</a></li>
+                                <li><a href={% url 'coplasemt' %}>Coplas EMT</a></li>
+                                <li><a href={% url 'curvasemt' %}>Curvas EMT</a></li>
+                                <li><a href={% url 'terminalesemt' %}>Terminales EMT</a></li>
+                                <li><a href={% url 'tuberiasemt' %}>Tuberías EMT</a></li>
+                            </ul>
+                        </li>
+                        <li><a href={% url 'galvanizado' %}>Galvanizado</a></li>
+                        <li><a href={% url 'tuberiasflexibles_accesorios' %}>Tuberias Flexibles y Accesorios</a></li>
+                        <li>
+                            <a role="button">Molduras y Canaletas</a>
+                            <ul class="submenu">
+                                <li><a href={% url 'accesoriosdemolduras' %}>Accesorios de Molduras</a></li>
+                                <li><a href={% url 'canaletas' %}>Canaletas</a></li>
+                                <li><a href={% url 'molduras' %}>Molduras</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a role="button">BPC/Escalerillas</a>
+                            <ul class="submenu">
+                                <li><a href={% url 'accesoriobandeja' %}>Accesorios Bandejas</a></li>
+                                <li><a href={% url 'accesorioescalerilla' %}>Accesorios Escalerillas</a></li>
+                                <li><a href={% url 'bandeja' %}>Bandejas</a></li>
+                                <li><a href={% url 'escalerilla' %}>Escalerillas</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                
+                <li>
+                    <a role="button">Iluminación</a>
+                    <ul class="submenu">
+                        <li>
+                            <a role="button">Canoas y Estancos</a>
+                            <ul class="submenu">
+                                <li><a href={% url 'equipoestanco' %}>Equipos Estancos</a></li>
+                                <li><a href={% url 'equipocanoa' %}>Equipos Canoas</a></li>
+                                <li><a href={% url 'tubosled' %}>Tubos LED</a></li>
+                                <li><a href={% url 'tubosfluorescentes' %}>Tubos Fluorescentes</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a role="button">Paneles LED</a>
+                            <ul class="submenu">
+                                <li><a href={% url 'panelesledredondosobrepuestos' %}>Paneles Redondos Sobrepuestos</a></li>
+                                <li><a href={% url 'panelesledredondoembutidos' %}>Paneles Redondos Embutidos</a></li>
+                                <li><a href={% url 'panelesledcuadradosobrepuestos' %}>Paneles Cuadrados Sobrepuestos</a></li>
+                                <li><a href={% url 'panelesledcuadradoembutidos' %}>Paneles Cuadrados Embutidos</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a role="button">Proyectores LED</a>
+                            <ul class="submenu">
+                                <li><a href={% url 'proyectoresconsensor' %}>Proyectores con Sensor</a></li>
+                                <li><a href={% url 'proyectoressinsensor' %}>Proyectores sin Sensor</a></li>
+                                <li><a href={% url 'proyectoressolares' %}>Proyectores Solares</a></li>
+                            </ul>
+                        </li>
+                        <li><a href={% url 'accesoriosiluminacion' %}>Accesorios de Iluminación</a></li>
+                        <li><a href={% url 'apliques' %}>Apliques</a></li>
+                        <li>
+                            <a role="button">Ampolletas</a>
+                            <ul class="submenu">
+                                <li><a href={% url 'ampolletase27' %}>Ampolletas E27</a></li>
+                                <li><a href={% url 'ampolletasgu10' %}>Ampolletas GU10</a></li>
+                                <li><a href={% url 'ampolletassmart' %}>Ampolletas Smart</a></li>
+                                <li><a href={% url 'ampolletasvintage' %}>Ampolletas Vintage</a></li>
+                            </ul>
+                        </li>
+                        <li><a href={% url 'lamparas' %}>Lámparas</a></li>
+                    </ul>
+                </li>
+                
+                <!-- Enchufe Industrial -->
+                <li>
+                    <a role="button">Enchufe Industrial</a>
+                    <ul class="submenu">
+                        <li>
+                            <a role="button">Sobrepuestos</a>
+                            <ul class="submenu">
+                                <li><a href={% url 'sobrepuestos380' %}>Sobrepuestos 380V</a></li>
+                                <li><a href={% url 'sobrepuestos220' %}>Sobrepuestos 220V</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a role="button">Volantes</a>
+                            <ul class="submenu">
+                                <li><a href={% url 'volantes380' %}>Volantes 380V</a></li>
+                                <li><a href={% url 'volantes220' %}>Volantes 220V</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a role="button">Embutidos</a>
+                            <ul class="submenu">
+                                <li><a href={% url 'embutidos380' %}>Embutidos 380V</a></li>
+                                <li><a href={% url 'embutidos220' %}>Embutidos 220V</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>                
+                
+                <!-- Gabinetes-Tableros -->
+                <li>
+                    <a role="button">Tableros y Gabinetes</a>
+                    <ul class="submenu">
+                        <li>
+                            <a role="button">Tableros</a>
+                            <ul class="submenu">
+                                <li><a href={% url 'tablerosexterior' %}>Tableros Exterior</a></li>
+                                <li><a href={% url 'tablerossobrepuesto' %}>Tableros Sobrepuesto</a></li>
+                                <li><a href={% url 'tablerosembutido' %}>Tableros Embutido</a></li>
+                            </ul>
+                        </li>
+                        <li><a href={% url 'gabinetes' %}>Gabinetes</a></li>
+                        <li><a href={% url 'cajas' %}>Cajas</a></li>
+                        <li><a href={% url 'cajasempalme' %}>Cajas de Empalme</a></li>
+                    </ul>
+                </li>
+                
+                <!-- Protección Eléctrica -->
+                <li>
+                    <a role="button">Protección Eléctrica</a>
+                    <ul class="submenu">
+                        <li><a href={% url 'automaticos' %}>Automáticos</a></li>
+                        <li><a href={% url 'diferenciales' %}>Diferenciales</a></li>
+                        <li><a href={% url 'contactores' %}>Contactores</a></li>
+                        <li><a href={% url 'complementosaccesorios' %}>Complementos y Accesorios</a></li>
+                    </ul>
+                </li>
+                
+                <!-- Pernería y Fijaciones -->
+                <li>
+                    <a role="button">Pernería y Fijaciones</a>
+                    <ul class="submenu">
+                        <li><a href={% url 'tuercas' %}>Tuercas</a></li>
+                        <li><a href={% url 'fijaciones' %}>Fijaciones</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>        
+    </header>
+
+    <!-- Carrito -->
+    <button id="abrir-carrito">
+        🛒 <span id="carrito-count">0</span>
+    </button>
+    
+    <div id="carrito" class="carrito-oculto">
+        <h2>Mi Cotización</h2>
+        <div id="carrito-items" style="max-height: 300px; overflow-y: auto;">
+            <!-- Los productos se agregarán dinámicamente aquí -->
+        </div>
+        <div>
+            <h3>Total: <span id="carrito-total">$0</span></h3>
+            <button id="finalizar-compra">Finalizar cotización</button>
+            <input type="checkbox" id="aceptar-terminos">
+            <label for="aceptar-terminos">He leído y acepto los <a href={% url 'terminoscondiciones' %} target="_blank" >términos y condiciones</a>.</label >
+        </div>
+        <button id="cerrar-carrito">Cerrar</button>
+    </div>
+
+    <main>
+        <section class="banner">
+            <img src="{% static 'images/banner.jpg' %}" alt="Banner">
+        </section>
+        {% block content %}
+        <section class="products">
+            <article>
+                <a href=>
+                    <img src="{% static 'images/S_Iluminacion.jpg' %}" alt="Iluminación LED">
+                    <h3>Iluminación LED</h3>
+                </a>
+            </article>
+            <article>
+                <a href=>
+                    <img src="{% static 'images/S_industriales.jpg' %}" alt="Enchufes Industriales">
+                    <h3>Enchufes Industriales</h3>
+                </a>
+            </article>
+            <article>
+                <a href=>
+                    <img src="{% static 'images/S_emt.jpg' %}" alt="EMT/Galvanizado">
+                    <h3>EMT/Galvanizado</h3>
+                </a>
+            </article>
+        </section>
+        {% endblock %}
+    </main>
+</body>
+
+<footer class="footer">
+    <div class="footer-content">
+        <!-- Título del formulario -->
+        <div class="footer-contact-title">
+            <h2>Contáctanos a través de nuestro correo.</h2>
+        </div>
+
+        <!-- Formulario de contacto -->
+        <div class="footer-contact-form">
+            <form id="contact-form">
+                {% csrf_token %}
+                <input type="text" placeholder="Nombre" id="nombre" class="contact-input" required />
+                <input type="email" placeholder="Correo electrónico" id="correo" class="contact-input" required />
+                <textarea placeholder="Mensaje" id="mensaje" class="contact-input" required></textarea>
+                <button type="submit" class="contact-button">Enviar</button>
+            </form>
+        </div>
+    </div>
+    <!-- Contexto de autenticación del usuario -->
+    <script id="isUserLoggedIn" type="application/json">
+        {{ user.is_authenticated|yesno:"true,false" }}
+    </script>
+    <script id="userEmail" type="application/json">
+        {{ user.email|default_if_none:"" }}
+    </script>
+
+    <!-- Información adicional del footer -->
+    <div class="footer-links">
+        <ul class="footer-links-list">
+            <li><a href={% url 'terminoscondiciones' %}>Términos y Condiciones</a></li>
+            <li><a href="{% static 'pdf/politica_de_privacidad.pdf' %}" target="_blank">Política de privacidad</a></li>
+            <li><a href=>Manual de Usuario</a></li>
+            <li><a href={% url 'ayuda' %}>Ayuda</a></li>
+        </ul>
+    </div>
+
+    <div class="footer-info">
+        <p><a href="https://maps.google.com/?q=Chiloé 1346, Punta Arenas" target="_blank" rel="noopener noreferrer">Chiloé 1346, Punta Arenas</a></p>
+        <p>+569 442343254</p>
+    </div>
+    <div class="footer-copyright">
+        <p>KOVAC Ferretería Técnica © 2024</p>
+    </div>
+</footer>
+
+<script src="{% static 'scripts/carrito.js' %}"></script>
+<script src="{% static 'scripts/contacto.js' %}"></script>
+<script src="{% static 'scripts/menu_toggle.js' %}" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</html>

@@ -1,0 +1,8 @@
+{% load static %}
+from django.contrib.auth import logout
+from django.shortcuts import redirect
+
+def logout_view(request):
+    logout(request)  # Cierra la sesión del usuario
+    return redirect('login')  # Redirige al formulario de login
+    {%block content%}{%endblock%}

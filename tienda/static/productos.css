@@ -1,0 +1,115 @@
+/* Contenedor de productos */
+.productos-destacados {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los productos salten a la siguiente fila si no caben */
+    justify-content: center; /* Centra los productos horizontalmente */
+    gap: 20px; /* Espaciado entre productos */
+    margin: 20px auto;
+    width: 90%;
+}
+
+/* Cada producto (tarjeta) */
+.producto {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    max-width: 300px; /* Limita el ancho de cada producto */
+    text-align: center;
+    box-shadow: 0 4px 8px rgb(201, 43, 77);
+    flex: 1 1 calc(25% - 20px); /* Cada producto ocupa el 25% del ancho disponible */
+    display: flex;
+    flex-direction: column; /* Asegura que los elementos dentro estén organizados en columna */
+    justify-content: space-between; /* Distribuye el contenido verticalmente */
+}
+
+.producto p {
+    display: -webkit-box;
+    -webkit-line-clamp: 4; /* Número de líneas permitidas */
+    -webkit-box-orient: vertical;
+    overflow: hidden; /* Oculta el contenido que excede */
+    text-overflow: ellipsis; /* Agrega "..." al final */
+}
+
+/* Imagen del producto */
+.producto img {
+    width: 100%; /* Imagen ocupa el ancho completo de la tarjeta */
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px; /* Espaciado inferior para separar la imagen del contenido */
+}
+
+/* Títulos y descripción */
+.producto h3 {
+    font-size: 18px;
+    color: #333;
+    margin: 10px 0;
+}
+
+.producto p {
+    font-size: 14px;
+    color: #666;
+    margin: 5px 0;
+    text-align: left; /* Alinea el texto de la descripción a la izquierda */
+}
+
+/* Precio */
+.producto span {
+    font-weight: bold;
+    color: #d9534f; /* Color rojo para destacar el precio */
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+/* Botón */
+.btn-agregar-carrito {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #e63946;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
+    align-self: center; /* Centra el botón dentro de la tarjeta */
+}
+
+.btn-agregar-carrito:hover {
+    background-color: #d62828;
+}
+
+/* Diseño responsivo */
+@media (max-width: 1024px) {
+    .producto {
+        flex: 1 1 calc(33.333% - 20px); /* Ocupa el 33.33% en pantallas medianas */
+    }
+}
+
+@media (max-width: 768px) {
+    .producto {
+        flex: 1 1 calc(50% - 20px); /* Ocupa el 50% en pantallas pequeñas */
+    }
+}
+
+@media (max-width: 480px) {
+    .producto {
+        flex: 1 1 100%; /* Ocupa el 100% del ancho en pantallas muy pequeñas */
+    }
+}
+
+@media (max-width: 1024px) {
+    .producto {
+        flex: 1 1 calc(33.333% - 20px); /* Adjust width on medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .producto {
+        flex: 1 1 calc(50% - 20px); /* Adjust width on small screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .producto {
+        flex: 1 1 100%; /* Full width on very small screens */
+    }
+}
